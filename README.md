@@ -1,2 +1,2 @@
 # Caravana_Medieval
-Desarrollaod en SpingBoot y Angular
+Desarrollado en SpingBoot y Angular
