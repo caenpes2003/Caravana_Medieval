@@ -1,0 +1,208 @@
+/* Tipografía medieval */
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+:host {
+  display: block;
+  padding: 1rem;
+  background: url('/assets/textures/parchment.png') repeat;
+  background-size: cover;
+  color: #3e2f1c;
+  font-family: 'MedievalSharp', serif;
+}
+
+mat-card {
+  background: rgba(255, 248, 220, 0.92);
+  border: 2px solid #8b5e3c;
+  border-radius: 16px;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
+  padding: 1.5rem;
+}
+
+mat-card-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #4a2c0a;
+  text-shadow: 1px 1px 1px #e6d2a2;
+}
+
+.trade-form {
+  background: rgba(255, 245, 215, 0.92);
+  padding: 1rem;
+  border: 2px solid #c49a6c;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+  margin-top: 1rem;
+}
+
+mat-form-field {
+  width: 100%;
+  font-family: 'MedievalSharp', serif;
+}
+
+button {
+  font-family: 'MedievalSharp', serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 2px solid #8b5e3c;
+  background: linear-gradient(to bottom, #f9e6c0, #e3c28b);
+  color: #3e2f1c;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3),
+              inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  width: 100%; /* opcional si quieres que sea del mismo ancho que el campo */
+}
+
+button:hover {
+  background: linear-gradient(to bottom, #fce9c5, #deb577);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4),
+              inset 0 -2px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+  cursor: pointer;
+}
+
+button:active {
+  background: #d8b37d;
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+table {
+  background: rgba(245, 234, 198, 0.95);
+  border: 1px solid #b08b58;
+  margin-top: 2rem;
+  font-family: 'MedievalSharp', serif;
+}
+
+table th,
+table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #b08040;
+  color: #3e2f1c;
+}
+
+table th {
+  background: #d6b977;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+mat-card-footer.price-formulas {
+  background: #f0e2c4;
+  font-size: 0.9rem;
+  font-style: italic;
+  text-align: center;
+  color: #6b4b2b;
+  border-top: 1px dashed #8b5e3c;
+  margin-top: 2rem;
+  padding: 0.5rem;
+}
+
+.caravana-status {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+  padding: 0.75rem 1.5rem;
+  margin: 1rem 0;
+  border: 2px solid #8b5e3c;
+  border-radius: 12px;
+  background: #f5e9cc;
+  color: #3e2f1c;
+  font-family: 'MedievalSharp', serif;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.boton-centrado {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0.5rem;
+}
+
+.trade-form mat-form-field,
+.trade-form .boton-centrado {
+  width: 100%;
+}
+
+.mat-tab-group {
+  background: transparent;
+  border: none;
+  margin-top: 1rem;
+}
+
+.mat-tab-label {
+  font-family: 'MedievalSharp', serif;
+  background: linear-gradient(to bottom, #f6e2b8, #d8b37d);
+  border: 2px solid #8b5e3c;
+  border-radius: 10px 10px 0 0;
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: #3e2f1c;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.mat-tab-label:hover {
+  background: linear-gradient(to bottom, #fce9c5, #deb577);
+  cursor: pointer;
+  transform: translateY(-1px);
+}
+
+.mat-tab-label.mat-tab-label-active {
+  background: #e3c28b;
+  border-bottom: none;
+  box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.2);
+}
+
+mat-form-field {
+  background: rgba(250, 234, 198, 0.85);
+  border: 2px solid #8b5e3c;
+  border-radius: 8px;
+  padding: 0.25rem 0.5rem;
+  font-family: 'MedievalSharp', serif;
+  color: #3e2f1c;
+  width: 100%;
+}
+
+mat-select {
+  font-family: 'MedievalSharp', serif;
+  font-weight: bold;
+  color: #3e2f1c;
+}
+
+.mat-select-panel {
+  background: #f9f0d4 !important;
+  border: 2px solid #8b5e3c;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  font-family: 'MedievalSharp', serif;
+  color: #3e2f1c;
+  border-radius: 8px;
+}
+
+.mat-option {
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  border-bottom: 1px solid #c9a36e;
+  transition: background 0.2s ease;
+}
+
+.mat-option:hover {
+  background-color: #e4c38d !important;
+  cursor: pointer;
+}
+
+.mat-option.mat-active {
+  background-color: #d6b177 !important;
+  color: #2e1d0b;
+}
+
+.mat-option[disabled] {
+  color: #a78d6e;
+  font-style: italic;
+}

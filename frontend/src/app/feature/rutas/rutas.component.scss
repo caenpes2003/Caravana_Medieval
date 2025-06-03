@@ -1,0 +1,201 @@
+.titulo-principal {
+  font-size: 2rem;
+  font-family: 'MedievalSharp', serif;
+  color: #3e2f1c;
+  text-shadow: 1px 1px 1px #fff;
+  margin: 0;
+}
+
+.formulario-ruta {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: 'MedievalSharp', serif;
+  background-color: rgba(255, 248, 220, 0.95);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+}
+
+.detalle-ruta {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 16px;
+  border-left: 4px solid #3f51b5;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.narrativa {
+  font-style: italic;
+  color: #5c3d1b;
+  margin-top: 12px;
+  border-left: 3px dashed #a0522d;
+  padding-left: 12px;
+}
+
+.animacion-viaje {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  animation: fadeIn 0.3s ease-in;
+}
+
+
+.animacion-viaje img {
+  max-width: 160px !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+button {
+  font-size: 1.1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-family: 'MedievalSharp', serif;
+  background-color: #f8e4b0;
+  color: #3e2f1c;
+  transition: all 0.3s ease-in-out;
+  border: 2px solid #a67c00;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background-color: #f2d085;
+  box-shadow: 0 0 10px 2px #ffd700;
+  transform: scale(1.03);
+}
+
+.historial-wrapper {
+  margin-top: 2rem;
+  background-color: rgba(255, 248, 220, 0.8);
+  border-left: 5px solid #a0522d;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.titulo-historial {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: #4b2e1e;
+  font-family: 'MedievalSharp', serif;
+}
+
+.lista-historial {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.lista-historial li {
+  font-family: 'MedievalSharp', serif;
+  font-size: 1.05rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px dashed #bfa980;
+  color: #3e2f1c;
+}
+.detalle-ruta {
+  transition: all 0.4s ease-in-out;
+  background-color: #fffef2;
+  border: 2px solid #ccb98a;
+  border-left: 6px solid #6b4c1f;
+  animation: fadeInSlide 0.3s ease-in-out;
+}
+
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logro-veterano {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #ffe7a0;
+  border: 2px solid #daa520;
+  text-align: center;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: #4b2e1e;
+  font-family: 'MedievalSharp', serif;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+.titulo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+.decor-estandarte {
+  height: 40px;
+  animation: ondear 2s ease-in-out infinite alternate;
+}
+.decor-estandarte.estandarte-logro {
+  filter: drop-shadow(0 0 6px gold) brightness(1.1);
+  transform: scale(1.05) rotate(2deg);
+}
+.decor-estandarte.estandarte-riesgo {
+  filter: drop-shadow(0 0 6px crimson) brightness(0.95);
+  transform: rotate(-2deg);
+}
+@keyframes ondear {
+  0% { transform: rotate(-1.5deg); }
+  100% { transform: rotate(1.5deg); }
+}
+
+.selector-personalizado .mat-select-trigger {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  gap: 8px;
+}
+
+.selector-personalizado .mat-select-value {
+  font-size: 1rem;
+  font-family: 'MedievalSharp', serif;
+}
+
+.mat-select-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.opcion-ruta {
+  display: flex;
+  flex-direction: column;
+  font-family: 'MedievalSharp', serif;
+  padding: 4px 2px;
+}
+
+.nombre-ciudad {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.etiqueta-riesgo {
+  font-size: 0.9rem;
+  margin-top: 2px;
+}
+
+.etiqueta-riesgo.segura { color: green; }
+.etiqueta-riesgo.insegura { color: darkred; }
+
+.detalle-extra {
+  font-size: 0.85rem;
+  color: #555;
+}

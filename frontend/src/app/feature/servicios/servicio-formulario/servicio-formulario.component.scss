@@ -1,0 +1,193 @@
+/* Variables de paleta medieval */
+:root {
+  --pergamino: #fff8e8;
+  --pergamino-b: #f8edd7;
+  --marron-osc: #5d4037;
+  --marron-med: #7b5748;
+  --marron-clr: #8d6e63;
+  --rojo-error: #a04040;
+}
+
+/* Contenedor del diálogo */
+.mat-mdc-dialog-container {
+  padding: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  animation: zoomIn 0.24s ease;
+  max-width: 480px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Cabecera con decoración */
+.titulo-pergamino {
+  margin: 0;
+  overflow: hidden;
+  padding: 1.2rem 2rem;
+  background: linear-gradient(to bottom, #faf5de, var(--pergamino-b));
+  border-bottom: 3px solid var(--marron-med);
+  font: 700 2.1rem "MedievalSharp", serif;
+  color: var(--marron-osc);
+  text-align: center;
+  text-shadow: 1px 1px #d4c4aa;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    max-width: 100%;
+    width: 40px;
+    height: 40px;
+    
+    background-size: cover;
+  }
+
+  &::before {
+    top: -10px;
+    left: -10px;
+    transform: rotate(180deg);
+  }
+
+  &::after {
+    bottom: -10px;
+    right: -10px;
+  }
+}
+
+/* Cuerpo del formulario */
+.dialog-servicio-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding: 2rem;
+  background: var(--pergamino);
+  font-family: "MedievalSharp", serif;
+  overflow-x: hidden;
+}
+
+/* Campos del formulario */
+.campo-medieval.mat-mdc-form-field {
+  width: 100%;
+
+  --mdc-outlined-text-field-container-shape: 12px;
+  --mdc-outlined-text-field-container-fill-color: var(--pergamino);
+  --mdc-outlined-text-field-outline-color: var(--marron-med);
+  --mdc-outlined-text-field-hover-outline-color: var(--marron-clr);
+  --mdc-outlined-text-field-focus-outline-color: var(--marron-osc);
+  --mdc-outlined-text-field-label-text-color: var(--marron-osc);
+  --mdc-outlined-text-field-input-text-color: var(--marron-osc);
+
+  .mdc-text-field {
+    border-radius: 12px;
+    overflow: visible;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .mat-mdc-form-field-infix {
+    padding: 0 0.85rem !important;
+    height: 3.4rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .mdc-text-field__input {
+    font-family: "MedievalSharp", serif;
+    font-size: 1.05rem;
+    padding: 0 !important;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &[type="number"] {
+      appearance: textfield;
+      -moz-appearance: textfield;
+    }
+  }
+
+  .mdc-floating-label {
+    background: var(--pergamino);
+    padding: 0 6px;
+    font-family: "MedievalSharp", serif;
+    font-size: 0.95rem;
+    color: var(--marron-osc) !important;
+  }
+}
+
+/* Mensajes de error */
+.mat-mdc-form-field-error {
+  color: var(--rojo-error) !important;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+/* Grupo de botones */
+.grupo-botones {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Estilos comunes botones */
+.btn {
+  flex: 1;
+  padding: 0.85rem 0;
+  border: none;
+  border-radius: 12px;
+  font: 600 1rem "MedievalSharp", serif;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  &:disabled {
+    filter: grayscale(0.6);
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+/* Botón cancelar */
+.btn-cancelar {
+  background: #f2dfa9;
+  color: var(--marron-osc);
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.14);
+
+  &:hover:not(:disabled) {
+    background: #e7d18b;
+  }
+}
+
+/* Botón guardar */
+.btn-guardar {
+  background: linear-gradient(145deg, #7a5948, #5d4037);
+  color: #fff;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.25);
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(145deg, #5d4037, #7a5948);
+  }
+}

@@ -1,0 +1,71 @@
+/* ---------- CONTENEDOR GENERAL ---------- */
+.registro-container {
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 32px;
+  border-radius: 16px;
+  background: #f4f1e9;
+  box-shadow: 0 8px 18px rgba(0,0,0,.15);
+  text-align: center;
+
+  .titulo   { font: 600 1.9rem 'MedievalSharp',serif; margin-bottom: 26px; color:#3e2723; }
+  .formulario { display:flex; flex-direction:column; gap:22px; }
+
+  .boton {
+    font-family:'MedievalSharp',serif;
+    font-weight:700;
+    padding:12px 20px;
+    border-radius:10px;
+    background:linear-gradient(to right,#8d6e63,#5d4037);
+    color:#fff;
+    box-shadow:0 6px 14px rgba(93,64,55,.4);
+    transition:transform .2s,background .35s;
+
+    &:hover  { background:linear-gradient(to right,#5d4037,#8d6e63); transform:translateY(-2px); }
+    mat-spinner { margin-left:8px; }  /* separa el spinner del texto */
+  }
+
+  .auth-link {
+    margin-top:18px; font-size:.95rem;
+    a { color:#5d4037; font-weight:600; text-decoration:underline wavy; }
+  }
+}
+
+/* ---------- CAMPOS MDC (clase .campo-medieval) ---------- */
+.campo-medieval.mat-mdc-form-field {
+  --mdc-outlined-text-field-container-shape: 12px;
+  --mdc-outlined-text-field-container-fill-color:#f9f4e8;
+  --mdc-outlined-text-field-outline-color:#5d4037;
+  --mdc-outlined-text-field-hover-outline-color:#5d4037;
+  --mdc-outlined-text-field-focus-outline-color:#5d4037;
+  --mdc-outlined-text-field-label-text-color:#5d4037;
+  --mdc-outlined-text-field-input-text-color:#3e2723;
+
+  .mdc-text-field { box-shadow:0 2px 6px rgba(0,0,0,.12); overflow:visible; }
+  .mat-mdc-form-field-icon-prefix,
+  .mat-mdc-form-field-icon-suffix,
+  .mat-mdc-select-arrow { color:#5d4037; }
+}
+
+/* ---------- Ajuste del label flotante ---------- */
+.campo-medieval .mdc-floating-label {
+  top:-1.35rem; background:#f4f1e9; padding:0 4px; border-radius:4px; color:#5d4037;
+}
+.campo-medieval.mat-mdc-form-field.mat-focused .mdc-floating-label { color:#5d4037!important; }
+
+/* ---------- Menú desplegable del <mat-select> ---------- */
+.mat-mdc-select-panel {
+  background:#fefaf3!important;
+  border:2px solid #5d4037;
+  border-radius:12px!important;
+  font-family:'MedievalSharp',serif!important;
+  transform-origin:top;
+  animation:desplegarMenu 200ms ease-out;
+  box-shadow:0 4px 12px rgba(0,0,0,.25)!important;
+}
+@keyframes desplegarMenu {
+  from { transform:scaleY(.8); opacity:0; }
+  to   { transform:scaleY(1);  opacity:1; }
+}
+.mat-mdc-option { padding:12px 20px; font-size:1.1rem; color:#3e2f1c; }
+.mat-mdc-option:hover { background:#f5e8d8; }

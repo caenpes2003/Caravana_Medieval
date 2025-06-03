@@ -1,0 +1,38 @@
+<!-- ===================================================
+     DIÁLOGO: NUEVA / EDITAR CIUDAD
+     ===================================================-->
+<h2 mat-dialog-title class="titulo-pergamino">
+  {{ modoEdicion ? "Editar Ciudad" : "Nueva Ciudad" }}
+</h2>
+
+<form [formGroup]="form" (ngSubmit)="guardar()" class="dialog-ciudad-container">
+  <!-- Campo: Nombre -->
+  <mat-form-field appearance="outline" class="campo-medieval">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre" required />
+  </mat-form-field>
+
+  <!-- Campo: Impuestos -->
+  <mat-form-field appearance="outline" class="campo-medieval">
+    <mat-label>Impuesto de entrada (MO)</mat-label>
+    <input
+      matInput
+      type="number"
+      formControlName="impuestos"
+      required
+      min="0"
+    />
+  </mat-form-field>
+
+  <!-- Botonera -->
+  <div class="grupo-botones">
+    
+    <button type="button" class="btn btn-cancelar" (click)="cancelar()">
+      Cancelar
+    </button>
+
+    <button type="submit" class="btn btn-guardar">
+      {{ modoEdicion ? "Guardar" : "Crear" }}
+    </button>
+  </div>
+</form>

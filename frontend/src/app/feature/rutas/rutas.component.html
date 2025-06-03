@@ -1,0 +1,86 @@
+<div class="titulo-wrapper">
+  <img src="/assets/icons/estandarte.webp" alt="Estandarte" class="decor-estandarte"
+       [ngClass]="{
+         'estandarte-logro': logroVeterano,
+         'estandarte-riesgo': rutaSeleccionada && !rutaSeleccionada.segura
+       }" />
+  <h2 class="titulo-principal">Selecciona una Ruta</h2>
+</div>
+
+<form [formGroup]="fg" (ngSubmit)="onViajar()" class="formulario-ruta">
+  <!-- Selector de rutas mejorado -->
+  <mat-form-field appearance="outline" class="campo-ruta selector-personalizado">
+    <mat-label>Ruta disponible</mat-label>
+    
+    <mat-select formControlName="rutaId">
+      <!-- Vista personalizada al seleccionar -->
+      <mat-select-trigger>
+        <span *ngIf="rutaSeleccionada">
+          {{ rutaSeleccionada.ciudadOrigenNombre }} → {{ rutaSeleccionada.ciudadDestinoNombre }} 
+          {{ rutaSeleccionada.segura ? '🟢' : '🔴' }} {{ rutaSeleccionada.distancia }} km
+        </span>
+      </mat-select-trigger>
+
+      <!-- Opciones -->
+      <mat-option *ngFor="let r of rutas" [value]="r.id">
+        <div class="opcion-ruta">
+          <mat-icon>place</mat-icon>
+          <span class="nombre-ciudad">{{ r.ciudadOrigenNombre }} → {{ r.ciudadDestinoNombre }}
+            <ng-container *ngIf="r.reversa">↔️</ng-container>
+          </span>
+          <span class="etiqueta-riesgo" [ngClass]="{ 'segura': r.segura, 'insegura': !r.segura }">
+            {{ r.segura ? '🟢 Segura' : '🔴 Insegura' }}
+          </span>
+          <span class="detalle-extra">{{ r.distancia }} km - {{ r.impuestoDestino }} MO</span>
+        </div>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Tarjeta de detalles de la ruta seleccionada -->
+  <div *ngIf="rutaSeleccionada">
+    <mat-card class="detalle-ruta mat-elevation-z2" @slideFade>
+
+      <mat-card-title>
+        {{ rutaSeleccionada.ciudadOrigenNombre }} → {{ rutaSeleccionada.ciudadDestinoNombre }}
+      </mat-card-title>
+      <mat-card-content>
+        <p><strong>Distancia:</strong> {{ rutaSeleccionada.distancia }} km</p>
+        <p><strong>Tipo:</strong>
+          <span matTooltip="Indica si hay peligro en la ruta">
+            {{ rutaSeleccionada.segura ? 'Segura' : 'Insegura' }}
+          </span>
+        </p>
+        <p *ngIf="!rutaSeleccionada?.segura">
+          <strong>Daño:</strong> {{ rutaSeleccionada.dano }} puntos
+        </p>
+        <p *ngIf="rutaSeleccionada.impuestoDestino > 0">
+          <strong>Impuesto:</strong> {{ rutaSeleccionada.impuestoDestino }} MO
+        </p>
+        <p class="narrativa">🗣️ {{ narrativaRuta }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!-- Animación de viaje -->
+  <div class="animacion-viaje" *ngIf="animando">
+    <img src="/assets/animations/caravana-placeholder.png" alt="Caravana en movimiento" />
+  </div>
+  <!-- Logro de veterano -->
+  <div *ngIf="logroVeterano" class="logro-veterano">
+    👑 <strong>¡Veterano de las rutas!</strong>
+  </div>
+  <!-- Botón de viajar -->
+  <button mat-raised-button color="primary" type="submit" [disabled]="fg.invalid || animando">
+    {{ animando ? 'Viajando...' : 'Viajar' }}
+  </button>
+  <!-- Historial de rutas -->
+  <div *ngIf="historialRutas.length > 0" class="historial-wrapper">
+    <h3 class="titulo-historial">📜 Rutas recorridas</h3>
+    <ul class="lista-historial">
+      <li *ngFor="let ruta of historialRutas">🛡️ {{ ruta }}</li>
+    </ul>
+  </div>
+
+
+  
+</form>

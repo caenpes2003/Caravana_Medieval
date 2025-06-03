@@ -1,0 +1,30 @@
+<h2>📜 Servicios Disponibles</h2>
+
+<div class="caravana-stats">
+  ❤️ Vida: {{ vida }} | 💰 Dinero: {{ dinero }} MO | 📦 Carga: {{ capacidadActual }}/{{ capacidadMax }}
+</div>
+
+<mat-list>
+  <mat-list-item *ngFor="let svc of servicios" class="servicio-item">
+    <div class="servicio-info">
+      <ng-container [ngSwitch]="svc.tipo.toUpperCase()">
+        <span *ngSwitchCase="'REPARAR'">🛠️ Reparar</span>
+        <span *ngSwitchCase="'MEJORARCAPACIDAD'">🐫 Mejorar Capacidad</span>
+        <span *ngSwitchCase="'MEJORARVELOCIDAD'">🐎 Mejorar Velocidad</span>
+        <span *ngSwitchCase="'GUARDIAS'">🛡️ Guardias</span>
+        <span *ngSwitchDefault>❓ {{ svc.tipo }}</span>
+      </ng-container>
+      — {{ svc.costo }} MO
+    </div>
+
+    <button mat-button (click)="usarServicio(svc.id)" [disabled]="svc.noDisponible">
+      {{ svc.noDisponible ? 'No disponible' : 'Comprar' }}
+    </button>
+  </mat-list-item>
+</mat-list>
+
+<!-- Animación tipo +50 vida -->
+<div *ngIf="animando" class="efecto-visual">{{ mensajeEfecto }}</div>
+
+<!-- Botón de regreso -->
+<button mat-button routerLink="/caravana">Volver a la caravana</button>

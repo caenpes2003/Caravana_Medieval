@@ -1,0 +1,130 @@
+<h2>Caravana Medieval</h2>
+
+<div class="barra-economica-con-icono">
+  <div class="barra-wrapper">
+    <mat-progress-bar
+      mode="determinate"
+      [value]="progresoEconomico"
+    ></mat-progress-bar>
+    <img class="meta-icono" src="/assets/icons/gold-bag.png" alt="Meta" />
+  </div>
+  <div
+    class="economia-texto"
+    [ngClass]="{ 'alerta-perdida': getEstaPerdiendo() }"
+  >
+    Progreso: {{ caravana?.dinero }} / {{ caravana?.metaGanancia }} monedas
+  </div>
+</div>
+
+<!-- ⏱️ Tiempo en texto -->
+<p class="info-block tiempo-juego">
+  {{ getTiempoTexto() }}
+</p>
+
+<div *ngIf="caravana; else loading">
+  <div *ngIf="auth.esAdministrador()" class="panel-jugadores">
+    <h3>👥 Jugadores conectados</h3>
+    <ul>
+      <li *ngFor="let j of jugadoresConectados">
+        🧑 {{ j.nombre }} – Rol: {{ j.rol }}
+      </li>
+    </ul>
+  </div>
+  <p class="info-block">
+    🏙️ <strong>Ciudad actual:</strong>
+    {{ caravana.ciudadActualNombre || "Desconocida" }}
+  </p>
+
+  <div class="grid-caracteristicas">
+    <div class="stat-card">
+      💰 <strong>Dinero inicial</strong><br />{{ caravana.dineroInicial }} MO
+    </div>
+    <div class="stat-card">
+      ⚡ <strong>Velocidad</strong><br />{{
+        caravana.velocidad | number : "1.1-2"
+      }}
+      km/h
+    </div>
+    <div class="stat-card">
+      ❤️ <strong>Vida</strong><br />{{ caravana.vida }}
+    </div>
+    <div class="stat-card">
+      🎯 <strong>Meta</strong><br />{{ caravana.metaGanancia }} MO
+    </div>
+    <div class="stat-card">
+      🧺 <strong>Capacidad</strong><br />{{ caravana.cargaActual }} /
+      {{ caravana.capacidadMax }}
+    </div>
+  </div>
+
+  <nav class="botones-caravana">
+   <!-- VIAJAR -->
+<button mat-raised-button
+(click)="irARutas()"
+        [disabled]="!travelEnabled"
+        matTooltip="No hay rutas disponibles"
+        [matTooltipDisabled]="travelEnabled">
+  Viajar
+</button>
+
+<!-- COMERCIO -->
+<button mat-raised-button
+(click)="irAComercio()"
+        [disabled]="auth.esAdministrador() || !comercioEnabled"
+        matTooltip="Debes hacer tu primer viaje"
+        [matTooltipDisabled]="comercioEnabled">
+  Comercio
+</button>
+
+<!-- SERVICIOS -->
+<button mat-raised-button
+(click)="irAServicios()"
+        [disabled]="auth.esAdministrador() || !comercioEnabled || auth.esComerciante()"
+        matTooltip="Debes hacer tu primer viaje"
+        [matTooltipDisabled]="comercioEnabled">
+  Servicios
+</button>
+
+
+    <button mat-raised-button color="primary" (click)="toggleInventario()">
+      {{ mostrarInventario ? "Ocultar inventario" : "Ver inventario" }}
+    </button>
+  </nav>
+
+  <div *ngIf="mostrarInventario" class="tabla-inventario">
+    <h3>📦 Inventario de la caravana</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of stockCaravana">
+          <td>{{ item.productoNombre }}</td>
+          <td>{{ item.cantidad }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="!comercioEnabled" class="texto-info resaltado-medieval">
+    ⚠️ <strong>Comercio</strong> y <strong>Servicios</strong> se desbloquearán
+    tras tu primer viaje.
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Cargando estado...</p>
+</ng-template>
+
+<ng-template #gameOverContent>
+  <div class="pantalla-gameover">
+    <h2>☠️ ¡Game Over!</h2>
+    <p>El tiempo ha llegado a su fin, comerciante.</p>
+    <button mat-raised-button color="warn" (click)="reiniciar()">
+      Reiniciar partida
+    </button>
+  </div>
+</ng-template>

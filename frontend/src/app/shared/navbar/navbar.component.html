@@ -1,0 +1,40 @@
+<!-- navbar.component.html -->
+<mat-toolbar>
+
+  <!-- ───── TÍTULO ANIMADO ───── -->
+  <span class="app-title">
+    <ng-container *ngFor="let l of 'Caravana Medieval'.split(''); let i = index">
+      <span [ngStyle]="{ '--i': i }">{{ l === ' ' ? '\u00A0' : l }}</span>
+    </ng-container>
+  </span>
+
+  <span class="spacer"></span>
+
+  <!-- ───── LINKS DESKTOP ───── -->
+  <nav class="nav-links">
+    <a mat-button routerLink="/caravana"  routerLinkActive="active-link">Caravana</a>
+
+    <a *ngIf="esCaravanero" mat-button routerLink="/rutas"     routerLinkActive="active-link">Rutas</a>
+    <a *ngIf="esCaravanero" mat-button routerLink="/servicios" routerLinkActive="active-link">Servicios</a>
+
+    <button *ngIf="esAdmin"
+            mat-icon-button color="warn"
+            matTooltip="Reiniciar partida"
+            (click)="onReset()">
+      <mat-icon>autorenew</mat-icon>
+    </button>
+
+    <ng-container *ngIf="auth.estaAutenticado(); else invitado">
+      <span class="user-chip">
+        {{ auth.getUsuario()?.nombre }} ({{ auth.getUsuario()?.rol }})
+      </span>
+      <button mat-button (click)="cerrarSesion()">Cerrar sesión</button>
+    </ng-container>
+
+    <ng-template #invitado>
+      <a mat-button routerLink="/login">Iniciar sesión</a>
+      <a mat-button routerLink="/registrar">Registrarse</a>
+    </ng-template>
+  </nav>
+
+</mat-toolbar>

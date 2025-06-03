@@ -1,0 +1,62 @@
+<h2 mat-dialog-title>
+  {{ modoEdicion ? 'Editar Stock' : 'Nuevo Stock' }}
+</h2>
+
+<form
+  class="dialog-servicio-container"
+  [formGroup]="form"
+  (ngSubmit)="guardar()"
+>
+  <!-- Producto -->
+  <mat-form-field appearance="outline" class="campo-medieval">
+    <mat-label>Producto</mat-label>
+    <mat-select formControlName="productoId" [disabled]="modoEdicion || saving">
+      <mat-option *ngFor="let p of productos" [value]="p.id">
+        {{ p.nombre }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Mensaje de duplicado -->
+  <div *ngIf="errorDuplicado" class="error-duplicado">
+    Ya existe este producto en la ciudad.
+  </div>
+
+  <!-- Cantidad -->
+  <mat-form-field appearance="outline" class="campo-medieval">
+    <mat-label>Cantidad</mat-label>
+    <input matInput type="number" formControlName="cantidad" [disabled]="saving" />
+  </mat-form-field>
+
+  <!-- Factor de demanda -->
+  <mat-form-field appearance="outline" class="campo-medieval">
+    <mat-label>Factor de demanda (fd)</mat-label>
+    <input matInput type="number" formControlName="fd" [disabled]="saving" />
+  </mat-form-field>
+
+  <!-- Factor de oferta -->
+  <mat-form-field appearance="outline" class="campo-medieval">
+    <mat-label>Factor de oferta (fo)</mat-label>
+    <input matInput type="number" formControlName="fo" [disabled]="saving" />
+  </mat-form-field>
+
+  <!-- Botones -->
+  <div class="grupo-botones">
+    <button
+      type="button"
+      class="btn btn-cancelar"
+      (click)="cancelar()"
+      [disabled]="saving"
+    >
+      Cancelar
+    </button>
+
+    <button
+      type="submit"
+      class="btn btn-guardar"
+      [disabled]="form.invalid || saving"
+    >
+      {{ saving ? 'Guardando…' : (modoEdicion ? 'Guardar' : 'Crear') }}
+    </button>
+  </div>
+</form>

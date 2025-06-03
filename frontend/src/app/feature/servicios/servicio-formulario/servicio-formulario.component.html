@@ -1,0 +1,65 @@
+<h2 mat-dialog-title class="titulo-pergamino">
+  {{ modoEdicion ? 'Editar servicio' : 'Nuevo servicio' }}
+</h2>
+
+<form
+  class="dialog-servicio-container"
+  [formGroup]="form"
+  (ngSubmit)="guardar()"
+  autocomplete="off"
+>
+  <!-- Tipo de servicio -->
+  <mat-form-field
+    appearance="outline"
+    class="campo-medieval"
+    floatLabel="always"
+  >
+    <mat-label>Tipo de servicio</mat-label>
+    <input
+      matInput
+      formControlName="tipo"
+      maxlength="40"
+      required
+      autocomplete="off"
+    />
+    <mat-error *ngIf="form.get('tipo')?.hasError('required')">
+      Ingresa un tipo válido
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Costo -->
+  <mat-form-field
+    appearance="outline"
+    class="campo-medieval"
+    floatLabel="always"
+  >
+    <mat-label>Costo (MO)</mat-label>
+    <input
+      matInput
+      type="number"
+      formControlName="costo"
+      min="0"
+      required
+      inputmode="decimal"
+    />
+    <mat-error *ngIf="form.get('costo')?.hasError('min')">
+      El costo no puede ser negativo
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Botones -->
+  <div class="grupo-botones">
+   <button type="button" class="btn btn-cancelar" (click)="cancelar()">
+
+      Cancelar
+    </button>
+
+    <button
+      type="submit"
+      class="btn btn-guardar"
+      [disabled]="form.invalid"
+    >
+      {{ modoEdicion ? 'Guardar' : 'Crear' }}
+    </button>
+  </div>
+</form>

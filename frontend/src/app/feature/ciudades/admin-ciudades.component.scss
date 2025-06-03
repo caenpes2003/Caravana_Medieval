@@ -1,0 +1,94 @@
+.panel-admin-ciudades {
+  max-width: 850px;
+  margin: 40px auto;
+  padding: 32px;
+  background: rgba(255, 248, 220, 0.95);
+  border-radius: 16px;
+  border: 2px solid #8b5e3c;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  font-family: "MedievalSharp", serif;
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #3e2723;
+    text-shadow: 1px 1px 1px #fff;
+  }
+
+  .btn-crear {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    background: #f3e5ab;
+    color: #4e342e;
+    border-radius: 6px;
+    padding: 6px 12px;
+    margin-bottom: 16px;
+    text-decoration: none;
+
+    &:hover {
+      background: #e0c78d;
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fffaf0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  th.mat-header-cell {
+    background: #f5e2c5;
+    color: #4e342e;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  td.mat-cell,
+  th.mat-header-cell {
+    padding: 12px;
+    border-bottom: 1px solid #d7ccc8;
+  }
+
+  td.mat-cell {
+    color: #3e2723;
+    font-size: 0.95rem;
+  }
+
+  .mat-column-acciones {
+    width: 120px;
+    text-align: center;
+  }
+
+  button.mat-button {
+    font-weight: bold;
+    padding: 4px 10px;
+    margin-right: 4px;
+    border-radius: 6px;
+    font-family: "MedievalSharp", serif;
+  }
+  .btn-volver {
+    margin-bottom: 18px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #4e342e;
+    border: 2px solid #8b5e3c;
+    background: #f9f4e3;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-family: "MedievalSharp", serif;
+    transition: background 0.25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    &:hover {
+      background: #e8dcc3;
+    }
+  }
+}

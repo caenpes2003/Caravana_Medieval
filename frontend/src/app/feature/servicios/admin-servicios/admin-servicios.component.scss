@@ -1,0 +1,133 @@
+/* ===== PANEL ADMIN SERVICIOS ===== */
+.panel-admin-servicios {
+  padding: 2rem;
+  font-family: 'MedievalSharp', serif;
+  background: var(--pergamino);
+  color: #3e2723;
+}
+
+/* ===== TÍTULO ===== */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #4e342e;
+  text-shadow: 1px 1px 1px #e0cba7;
+}
+
+/* ===== BOTÓN NUEVO SERVICIO ===== */
+.btn-crear {
+  font: 600 1rem 'MedievalSharp', serif;
+  background: #d7ccc8;
+  color: #3e2723;
+  border: 2px solid #a1887f;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: #bcaaa4;
+  }
+}
+
+/* ===== TABLA ===== */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  font-family: 'MedievalSharp', serif;
+}
+
+th.mat-header-cell,
+th.mat-mdc-header-cell {
+  background: #f5e2c5;
+  color: #4e342e;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 14px;
+  border-radius: 8px 8px 0 0;
+  font-family: 'MedievalSharp', serif;
+}
+
+tr.mat-row,
+tr.mat-mdc-row,
+td.mat-cell,
+td.mat-mdc-cell {
+  background: #fff8e1 !important;
+  font-family: 'MedievalSharp', serif;
+}
+
+tr.mat-row,
+tr.mat-mdc-row {
+  border: 1px solid #d7ccc8;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+td.mat-cell,
+td.mat-mdc-cell {
+  padding: 14px;
+  color: #3e2723;
+  font-size: 0.95rem;
+}
+
+.mat-column-acciones {
+  width: 130px;
+  text-align: center;
+}
+
+/* ===== BOTONES DE ACCIÓN ===== */
+.btn-accion {
+  background: #efebe9;
+  border: 1px solid #a1887f;
+  color: #3e2723;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 0 4px;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: #d7ccc8;
+  }
+
+  .material-icons {
+    font-size: 1.1rem;
+  }
+}
+
+.btn-warn {
+  background: #f8bbd0;
+  border-color: #c2185b;
+  color: #880e4f;
+
+  &:hover {
+    background: #f48fb1;
+  }
+}
+
+/* ===== BOTÓN VOLVER ===== */
+.contenedor-volver {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.btn-volver {
+  background: #e0cba7;
+  border: 2px solid #a1887f;
+  color: #4e342e;
+  font: 600 1rem 'MedievalSharp', serif;
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  cursor: pointer;
+
+  mat-icon {
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+
+  &:hover {
+    background: #d7b98c;
+  }
+}

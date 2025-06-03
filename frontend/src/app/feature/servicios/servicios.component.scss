@@ -1,0 +1,125 @@
+:host {
+    font-family: 'MedievalSharp', cursive;
+    background: #f4ecd8;
+    padding: 2rem;
+    display: block;
+    min-height: 100vh;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: #5a3210;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #b28d5e;
+    padding-bottom: 0.5rem;
+  }
+  
+  .caravana-stats {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: #5a3210;
+    background: #fef6dc;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #e1c994;
+    display: inline-block;
+  }
+  
+  mat-list {
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+  
+  mat-list-item.servicio-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #e3cba4;
+    border-radius: 10px;
+    background: #fff7e3;
+    min-height: 64px;
+    line-height: 1.5;
+    font-size: 1.1rem;
+  }
+  
+  .servicio-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-grow: 1;
+    font-size: 1.1rem;
+  }
+  
+  button[mat-button] {
+    background: linear-gradient(to bottom, #8b5e3c, #6e472b);
+    color: #fff8e6;
+    font-weight: bold;
+    font-family: 'MedievalSharp', cursive;
+    border: 2px solid #5a3210;
+    border-radius: 8px;
+    padding: 0.2rem 0.8rem;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    letter-spacing: 0.3px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  
+    &:hover:not([disabled]) {
+      background: linear-gradient(to bottom, #a06a42, #845231);
+      transform: scale(1.04);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+    }
+  
+    &[disabled] {
+      background: #d5c3aa;
+      color: #eee3d0;
+      border: 2px solid #c5b191;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+  }
+  
+  button[routerLink] {
+    display: block;
+    margin: 2rem auto 0 auto;
+    background: #5e4027;
+    font-size: 1rem;
+  }
+  
+  .efecto-visual {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 235, 185, 0.95);
+    border: 2px solid #a06a42;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    animation: flotar 1.5s ease-in-out;
+    z-index: 1000;
+  }
+  
+  @keyframes flotar {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, 0);
+    }
+    30% {
+      opacity: 1;
+      transform: translate(-50%, -10px);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -40px);
+    }
+  }
+  

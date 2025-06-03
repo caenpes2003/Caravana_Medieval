@@ -1,0 +1,100 @@
+/* ──────────────────────────────────────────
+   Animación de aparición “zoom medieval”
+────────────────────────────────────────── */
+:host {
+  display: block;
+  animation: zoomMedievalIn 0.3s ease-out;
+}
+
+@keyframes zoomMedievalIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+/* ──────────────────────────────────────────
+   Contenedor del formulario
+────────────────────────────────────────── */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background: var(--pergamino, #fff8e8);
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 0 12px rgba(93, 64, 55, 0.30);
+  font-family: 'MedievalSharp', serif;
+}
+
+/* Mensaje de duplicado */
+.error-duplicado {
+  color: var(--rojo-error, #a04040);
+  font-weight: bold;
+  margin: -10px 0 10px;
+}
+
+/* ======================================================================
+   ::ng-deep  → atraviesa encapsulación y shadow-DOM de Angular Material
+   ====================================================================== */
+::ng-deep {
+
+  /* ── Campos de texto / select ────────────────────────── */
+  .mat-mdc-form-field {
+    width: 100%;
+    overflow: visible;                 /* evita corte de etiqueta flotante */
+
+    /* Colores y fuente */
+    --mdc-outlined-text-field-container-fill-color: #fef9f2;
+    --mdc-outlined-text-field-outline-color: var(--marron-osc, #5d4037);
+    --mdc-outlined-text-field-label-text-color:   var(--marron-osc, #5d4037);
+    --mdc-outlined-text-field-focus-label-text-color: var(--marron-osc, #5d4037);
+    --mdc-outlined-text-field-input-text-color: #3e2723;
+    --mdc-outlined-text-field-input-font: 1rem 'MedievalSharp', serif;
+
+    /* Refuerzo de etiqueta en foco (por si override) */
+    .mdc-floating-label,
+    &.mat-focused .mdc-floating-label {
+      color: var(--marron-osc, #5d4037) !important;
+    }
+  }
+
+  /* ── Botones Medievales ───────────────────────────────── */
+  .mat-mdc-button,
+  .mat-mdc-raised-button {
+    font-family: 'MedievalSharp', serif !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    padding: 0.6rem 1.4rem !important;
+    border-radius: 12px !important;
+    border: 2px solid #5d4037 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, .20) !important;
+    text-transform: none !important;
+    transition: all 0.2s ease !important;
+  }
+
+  /* Botón “Crear / Guardar” (raised) */
+  .mat-mdc-raised-button {
+    background: linear-gradient(to bottom, #6d4c41, #4e342e) !important;
+    color: #fff !important;
+  }
+  .mat-mdc-raised-button:hover {
+    background: #3e2723 !important;
+    transform: scale(1.03);
+  }
+
+  /* Botón “Cancelar” (flat) */
+  .mat-mdc-button {
+    background: linear-gradient(to bottom, #f3e5ab, #e0c97a) !important;
+    color: #5d4037 !important;
+  }
+  .mat-mdc-button:hover {
+    background: #d8bc65 !important;
+    transform: scale(1.03);
+  }
+
+  /* Contenedor de botones */
+  .botones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+}

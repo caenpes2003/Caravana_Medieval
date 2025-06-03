@@ -1,0 +1,75 @@
+<div class="registro-container mat-elevation-z4">
+
+  <h2 class="titulo">Crear cuenta</h2>
+
+  <form [formGroup]="form" (ngSubmit)="registrar()" class="formulario">
+
+    <!-- Nombre -->
+    <mat-form-field appearance="outline" class="campo-medieval">
+      <mat-label>Nombre de usuario</mat-label>
+      <input matInput formControlName="nombre" placeholder="Ej. elMedieval123" />
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+
+    <!-- Contraseña -->
+    <mat-form-field appearance="outline" class="campo-medieval">
+      <mat-label>Contraseña</mat-label>
+      <input matInput formControlName="password" type="password" placeholder="••••••••" />
+      <mat-icon matSuffix>lock</mat-icon>
+    </mat-form-field>
+
+    <!-- Rol -->
+    <mat-form-field appearance="outline" class="campo-medieval">
+      <mat-label>Rol</mat-label>
+      <mat-select formControlName="rol">
+        <mat-option value="CARAVANERO">Caravanero</mat-option>
+        <mat-option value="COMERCIANTE">Comerciante</mat-option>
+        <mat-option value="ADMINISTRADOR">Administrador</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Nombre de caravana (solo admin) -->
+    <mat-form-field *ngIf="rolValue === 'ADMINISTRADOR'"
+                    appearance="outline"
+                    class="campo-medieval">
+      <mat-label>Nombre de la caravana</mat-label>
+      <input matInput formControlName="nombreCaravana" placeholder="Ej. La Gran Ruta" />
+      <mat-icon matSuffix>flag</mat-icon>
+    </mat-form-field>
+
+    <!-- Selección de caravana (jugadores normales) -->
+    <mat-form-field *ngIf="rolValue !== 'ADMINISTRADOR'"
+                    appearance="outline"
+                    class="campo-medieval">
+      <mat-label>Unirse a caravana</mat-label>
+      <mat-select formControlName="caravanaId">
+        <mat-option *ngFor="let c of caravanas" [value]="c.id">
+          {{ c.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Botón -->
+    <button mat-raised-button color="primary" class="boton"
+            type="submit"
+            [disabled]="form.invalid || cargando">
+
+      <mat-spinner *ngIf="cargando" diameter="20"></mat-spinner>
+      <span *ngIf="!cargando">Crear cuenta</span>
+    </button>
+  </form>
+
+  <p class="auth-link">
+    ¿Ya tienes una cuenta?
+    <a routerLink="/login">Inicia sesión aquí</a>
+  </p>
+</div>
+<pre style="margin-top: 2rem;">
+🧩 Form status: {{ form.status }}
+
+🔹 nombre: {{ form.get('nombre')?.status }}
+🔹 password: {{ form.get('password')?.status }}
+🔹 rol: {{ form.get('rol')?.status }}
+🔹 nombreCaravana: {{ form.get('nombreCaravana')?.status }} (value: {{ form.get('nombreCaravana')?.value }})
+🔹 caravanaId: {{ form.get('caravanaId')?.status }} (value: {{ form.get('caravanaId')?.value }})
+</pre>

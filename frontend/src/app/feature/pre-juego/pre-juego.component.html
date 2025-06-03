@@ -1,0 +1,72 @@
+<div class="cargando" *ngIf="cargando || !form">
+  <mat-spinner diameter="60"></mat-spinner>
+</div>
+<h2>⚔️ CONFIGURACIÓN DE LA PARTIDA ⚔️</h2>
+
+<form *ngIf="form" [formGroup]="form" class="formulario-medieval">
+
+ <!-- 🏰 Selección de ciudades -->
+<fieldset>
+  <legend>🗺️ Elige tus ciudades</legend>
+  <div formArrayName="seleccion" class="checkbox-grid">
+    <mat-checkbox *ngFor="let c of ciudades; let i = index" [formControlName]="i">
+      {{ c.nombre }}
+    </mat-checkbox>
+
+    
+  </div>
+</fieldset>
+
+  <!-- ⏱️ Tiempo límite -->
+  <fieldset>
+    <legend>⏳ Tiempo límite</legend>
+    <mat-radio-group formControlName="tiempoLimite" class="radio-group">
+      <mat-radio-button value="1200">20 min</mat-radio-button>
+      <mat-radio-button value="60">1 min</mat-radio-button>
+      <mat-radio-button value="7200">2 horas</mat-radio-button>
+    </mat-radio-group>
+  </fieldset>
+
+  <!-- 💰 Oro inicial -->
+  <fieldset>
+    <legend>💰 Oro inicial</legend>
+    <mat-form-field>
+      <input matInput type="number" formControlName="oroInicial" min="1" placeholder="Ej: 200 MO">
+    </mat-form-field>
+  </fieldset>
+
+  <!-- 🎯 Meta de monedas -->
+  <fieldset>
+    <legend>🎯 Meta de monedas</legend>
+    <mat-form-field>
+      <input matInput type="number" formControlName="metaMonedas" placeholder="Ej: 1000 MO">
+    </mat-form-field>
+  </fieldset>
+
+  <!-- ❤️ Vida inicial -->
+  <fieldset>
+    <legend>❤️ Vida inicial</legend>
+    <div class="valor-fijo">1000</div>
+  </fieldset>
+
+  <!-- Botón -->
+  <div class="boton-inicio-wrapper">
+    <button mat-raised-button class="boton-medieval" 
+            (click)="onIniciar()"
+            [disabled]="botonDeshabilitado || cargando"
+            [ngClass]="{ 'glow-activo': glowActivo }">
+      <mat-icon>travel_explore</mat-icon>
+      Iniciar Partida
+    </button>
+  </div>
+  <!-- 👑 Panel de administración (solo visible para ADMINISTRADOR) -->
+<div *ngIf="rol === 'ADMINISTRADOR'" class="panel-admin-prejuego">
+  <h3>⚙️ Panel del Administrador</h3>
+  <a routerLink="/admin-ciudades" class="boton-medieval">🏙️ Ciudades</a>
+  <a routerLink="/admin-servicios" class="boton-medieval">🛠️ Servicios</a>
+  <a routerLink="/admin-stock" class="boton-medieval">📦 Stock</a>
+</div>
+
+
+</form>
+

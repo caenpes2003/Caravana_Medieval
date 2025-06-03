@@ -1,0 +1,29 @@
+<div class="auth-container mat-elevation-z4">
+  <h2 class="titulo">Ingresar a tu Caravana</h2>
+
+  <form (ngSubmit)="ingresar()" class="formulario">
+
+    <!-- Nombre -->
+    <mat-form-field appearance="outline" class="campo-medieval">
+      <mat-label>Nombre de usuario</mat-label>
+      <input matInput [(ngModel)]="nombre" name="nombre" placeholder="Ej. caballero123" required />
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+
+    <!-- Contraseña -->
+    <mat-form-field appearance="outline" class="campo-medieval">
+      <mat-label>Contraseña</mat-label>
+      <input matInput [(ngModel)]="password" name="password" type="password" placeholder="••••••••" required />
+      <mat-icon matSuffix>lock</mat-icon>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" class="boton" type="submit">
+      Entrar
+    </button>
+  </form>
+
+  <p class="auth-link">
+    ¿No tienes cuenta?
+    <a routerLink="/registrar">Regístrate aquí</a>
+  </p>
+</div>

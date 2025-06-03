@@ -1,0 +1,217 @@
+/* =======================================================
+   FUENTES
+   =======================================================*/
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+/* =======================================================
+   ESTILOS BASE DEL DOCUMENTO
+   =======================================================*/
+html, body { height: 100%; }
+
+body {
+  font-family: 'MedievalSharp', serif;
+  background: url('/assets/textures/parchment.png') repeat;
+  background-size: cover;
+  color: #3e2f1c;
+  margin: 0;
+}
+
+/* =======================================================
+   CONTENEDOR GENERAL
+   =======================================================*/
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: rgba(255, 248, 220, 0.95);
+  padding: 2rem;
+  border: 2px solid #8b5e3c;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+}
+
+/* =======================================================
+   CABECERAS Y VÍNCULOS
+   =======================================================*/
+h1, h2 {
+  font-size: 2.4rem;
+  color: #4b2e1e;
+  text-align: center;
+  text-shadow: 1px 1px 2px #000;
+}
+
+a {
+  color: #8b0000;
+  font-weight: bold;
+  text-decoration: underline dotted;
+}
+a:hover { color: #b22222; }
+
+/* =======================================================
+   FORMULARIOS “MEDIEVALES” (fieldset genérico)
+   =======================================================*/
+.formulario-medieval {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 248, 220, 0.9);
+  border: 2px dashed #8b5e3c;
+  border-radius: 12px;
+}
+
+fieldset {
+  border: 2px solid #b8860b;
+  border-radius: 8px;
+  background: #fffaf0;
+  padding: 1rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+legend {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #4b2e1e;
+}
+
+/* =======================================================
+   BOTONES PERSONALIZADOS
+   =======================================================*/
+
+/* Botón medieval reutilizable */
+.boton-medieval {
+  font-family: 'MedievalSharp', serif;
+  font-size: 0.95rem;
+  background: #f3e5ab;
+  color: #4e342e;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #b8860b;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #e0c78d;
+    transform: scale(1.03);
+  }
+}
+
+/* Botones planos personalizados (sin interferir con mat-button) */
+button:not(.mat-button):not(.mat-raised-button):not(.mat-icon-button):not(.mat-stroked-button) {
+  font-family: 'MedievalSharp', serif;
+  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background: #f8e4b0;
+  color: #3e2f1c;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.2s ease-in-out;
+}
+
+button:not(.mat-button):hover {
+  background: #e2c187;
+}
+
+/* =======================================================
+   ANGULAR MATERIAL – ESTÉTICA MEDIEVAL (v17 MDC)
+   =======================================================*/
+
+.mat-mdc-form-field {
+  width: 100%;
+  max-width: 400px;
+  font-family: 'MedievalSharp', serif;
+
+  --mdc-outlined-text-field-container-shape: 10px;
+  --mdc-outlined-text-field-container-fill-color: #fdf6e3;
+  --mdc-outlined-text-field-outline-color: #a0522d;
+  --mdc-outlined-text-field-hover-outline-color: #a0522d;
+  --mdc-outlined-text-field-focus-outline-color: #a0522d;
+
+  --mdc-outlined-text-field-label-text-color: #5c3317;
+  --mdc-outlined-text-field-input-text-color: #3e2f1c;
+  --mdc-outlined-text-field-input-font: 1.05rem 'MedievalSharp', serif;
+}
+
+/* ► Nueva sección: refuerza color café en foco, asterisco y flecha */
+.mat-mdc-form-field .mdc-floating-label,
+.mat-mdc-form-field .mdc-floating-label--float-above,
+.mat-mdc-form-field.mat-focused .mdc-floating-label {
+  color: #5d4037 !important;   /* marrón oscuro */
+}
+
+.mat-mdc-form-field-required-marker {
+  color: #5d4037 !important;
+}
+
+.mat-mdc-select-arrow {
+  color: #5d4037 !important;
+}
+
+/* Panel del select (ya estaba) */
+.mat-mdc-select-panel {
+  background: #fefaf3 !important;
+  color: #3e2f1c !important;
+  font-family: 'MedievalSharp', serif !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .25) !important;
+}
+
+/* =======================================================
+   GRUPO DE BOTONES (diálogos)
+   =======================================================*/
+.grupo-botones {
+  display: flex;
+  gap: 1rem;              /* separación consistente */
+}
+
+/* ───────────────────────────────────────────────
+   EFECTOS HOVER / ACTIVE PARA CUALQUIER BOTÓN
+   (Material o personalizado)
+─────────────────────────────────────────────── */
+button,
+a.boton-medieval,               /* tu botón reutilizable */
+.mat-mdc-button,
+.mat-mdc-raised-button,
+.mat-mdc-stroked-button,
+.mat-mdc-flat-button,
+.mat-mdc-fab,
+.mat-mdc-mini-fab {
+  transition: transform 0.20s ease, box-shadow 0.25s ease,
+              filter 0.25s ease, background 0.25s ease;
+  /* mantiene tipografía medieval en todos */
+  font-family: 'MedievalSharp', serif;
+}
+
+/* EFECTO HOVER  */
+button:hover,
+a.boton-medieval:hover,
+.mat-mdc-button:hover,
+.mat-mdc-raised-button:hover,
+.mat-mdc-stroked-button:hover,
+.mat-mdc-flat-button:hover,
+.mat-mdc-fab:hover,
+.mat-mdc-mini-fab:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .30);
+  filter: brightness(1.05);
+}
+
+/* EFECTO ACTIVE  (clic) */
+button:active,
+a.boton-medieval:active,
+.mat-mdc-button:active,
+.mat-mdc-raised-button:active,
+.mat-mdc-stroked-button:active,
+.mat-mdc-flat-button:active,
+.mat-mdc-fab:active,
+.mat-mdc-mini-fab:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .25);
+  filter: brightness(0.95);
+}
